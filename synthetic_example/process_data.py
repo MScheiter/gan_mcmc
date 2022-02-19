@@ -62,42 +62,42 @@ with open(r'processed_data/integrals_std_array.obj','wb') as file:
     pickle.dump(std_array,file)
 
 
-# ### Sample data from high-dimensional GANs ###
-#
-# def get_slice(data):
-#     dim = data.shape[1]
-#     for i in range(dim-2):
-#         data = data[np.abs(data[:,dim-1])<0.15,:dim-1]
-#         dim -= 1
-#     return data
-#
-# target = int(3e5)
-# step = int(2e5)
-#
-# dims = 2,3,4,7,10
-#
-# for i,dim in enumerate(dims):
-#     print('-----')
-#     print(dim)
-#     slice_data = np.zeros((target,2))
-#     done = 0
-#
-#     for j in range(20000):
-#
-#         if done >= target:
-#             break
-#
-#         model = torch.load('trained_gans/circle_dim_'+str(dim)+'.pt')
-#         data = model.gen(torch.randn(step,100)).detach().numpy()
-#
-#         data = get_slice(data)
-#
-#         new = data.shape[0]
-#         if done+new > target:
-#             slice_data[done:,:] = data[:(target-done),:]
-#         else:
-#             slice_data[done:done+new,:] = data
-#         done += new
-#
-#     with open('processed_data/sliced_samples_dim_'+str(dim)+'.obj','wb') as file:
-#         pickle.dump(slice_data, file)
+### Sample data from high-dimensional GANs ###
+
+def get_slice(data):
+    dim = data.shape[1]
+    for i in range(dim-2):
+        data = data[np.abs(data[:,dim-1])<0.15,:dim-1]
+        dim -= 1
+    return data
+
+target = int(3e5)
+step = int(2e5)
+
+dims = 2,3,4,7,10
+
+for i,dim in enumerate(dims):
+    print('-----')
+    print(dim)
+    slice_data = np.zeros((target,2))
+    done = 0
+
+    for j in range(20000):
+
+        if done >= target:
+            break
+
+        model = torch.load('trained_gans/circle_dim_'+str(dim)+'.pt')
+        data = model.gen(torch.randn(step,100)).detach().numpy()
+
+        data = get_slice(data)
+
+        new = data.shape[0]
+        if done+new > target:
+            slice_data[done:,:] = data[:(target-done),:]
+        else:
+            slice_data[done:done+new,:] = data
+        done += new
+
+    with open('processed_data/sliced_samples_dim_'+str(dim)+'.obj','wb') as file:
+        pickle.dump(slice_data, file)
