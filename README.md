@@ -9,7 +9,7 @@ The codes used in this study to train the GANs can be found in the folder `synth
 
 ## Synthetic example
 The directory `synthetic_example` contains everything needed to reproduce the synthetic example in section 3 of the paper. The full data processing pipeline can be reproduced:
-- `run_gans.py` will use the original data provided in `datasets` and train GANs on them as specified in the paper (see section 3 and Appendix B1). The trained GANs are stored in `traiend_gans`. (Script runs ~15 hours)
+- `run_gans.py` will use the original data provided in `datasets` and train GANs on them as specified in the paper (see section 3 and Appendix B1). The trained GANs are stored in `trained_gans`. (Script runs ~15 hours)
 - `process_data.py` will prepare the data to make plots, i.e. draw fake data from the GANs, calculate integrals, etc. The processed data can be found in `processed_data`. (Script runs ~1 hour)
 - `plot_figures.py` will reproduce Figures 1-4 of the paper and store them in the directory `figures`.
 
@@ -17,7 +17,6 @@ The directory `synthetic_example` contains everything needed to reproduce the sy
 The directory `geophysical_example` contains the trained GANs from section 4 and everything needed to reproduce the figures of the geophysical example based on the study of Mousavi et al. (2021).
 - `plot_figures.py` can be used to reproduce Figures 5-9 of the paper and store them in the directory `figures`. All data necessary for these plots can be found in `plotting_data`.
 - `trained_gans` contains the trained GANs of the Australia patch from section 4.2 and the 16 patches from section 4.4.
-
 
 If you use the tomography data of Mousavi et al. (2021) in its original or GAN-reproduced version, please cite their paper:
 
