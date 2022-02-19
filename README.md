@@ -1,4 +1,4 @@
-# Code and data for "Upscaling and downscaling Monte Carlo ensembles with generative models" (Scheiter et al., GJI 2022)
+# Code and data for "Upscaling and downscaling Monte Carlo ensembles with generative models" (Scheiter et al., GJI, 2022)
 
 This repository contains code and data supporting the work published in *TBA*
 
