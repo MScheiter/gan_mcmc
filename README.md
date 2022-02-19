@@ -22,3 +22,12 @@ The directory `geophysical_example` contains the trained GANs from section 4 and
 If you use the tomography data of Mousavi et al. (2021) in its original or GAN-reproduced version, please cite their paper:
 
 Mousavi, S., Tkalcic, H., Hawkins, R., & Sambridge, M., 2021. [Lowermost mantle shear-velocity structure from hierarchical trans-dimensional Bayesian tomography](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2020JB021557), J. Geophys. Res. Solid Earth, 126, e2020JB021557.
+
+## Recommended package versions
+All codes in this repository have been tested with the following package versions:
+- Python 3.7.10
+- Numpy 1.20.2
+- Matplotlib 3.4.1
+- PyTorch 1.8.0
+- Cartopy 0.18.0
+- tqdm 4.32.2
