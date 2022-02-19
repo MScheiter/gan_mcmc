@@ -4,7 +4,7 @@ from matplotlib import gridspec,colors
 import cartopy.crs as ccrs
 import pickle
 
-dpi = 500
+dpi = 280
 
 ### Load data
 

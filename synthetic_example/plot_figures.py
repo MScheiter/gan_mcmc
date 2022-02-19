@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 import matplotlib.gridspec as gridspec
 import pickle
 
-dpi = 500
+dpi = 280
 
 ##### Figure 1 -- Motivating example with simple Gaussian distribution #####
 
