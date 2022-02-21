@@ -227,12 +227,12 @@ for i,index in enumerate(indices):
     pcm = axs[i+2].contourf(data_dict['lon'],data_dict['lat'],real_cov_point,transform=ccrs.PlateCarree(),cmap=cmap,levels=np.linspace(cov_min,cov_max,50),extend='both')
     axs[i+2].coastlines()
     axs[i+2].axis('off')
-    axs[i+2].plot(data_dict['chosen_lon'][index],data_dict['chosen_lat'][index],'x',color='white',markersize=8,transform=ccrs.PlateCarree())
+    axs[i+2].plot(data_dict['chosen_lon'][index],data_dict['chosen_lat'][index],'*',color='yellow',markersize=12,transform=ccrs.PlateCarree())
 
     pcm = axs[i+6].contourf(data_dict['lon'],data_dict['lat'],fake_cov_point,transform=ccrs.PlateCarree(),cmap=cmap,levels=np.linspace(cov_min,cov_max,50),extend='both')
     axs[i+6].coastlines()
     axs[i+6].axis('off')
-    axs[i+6].plot(data_dict['chosen_lon'][index],data_dict['chosen_lat'][index],'x',color='white',markersize=8,transform=ccrs.PlateCarree())
+    axs[i+6].plot(data_dict['chosen_lon'][index],data_dict['chosen_lat'][index],'*',color='yellow',markersize=12,transform=ccrs.PlateCarree())
 
 axs[4].text(0,1.05,'Point spread functions',va='center',ha='center',rotation='horizontal',rotation_mode='anchor',transform=axs[4].transAxes,fontsize=15)
 
