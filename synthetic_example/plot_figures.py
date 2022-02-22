@@ -147,12 +147,12 @@ phi = xy2phi(X,Y)
 axs = []
 fig = plt.figure(figsize=(9,6))
 gs = gridspec.GridSpec(1,3,wspace=0.1)
-gs.update(left=0.07,right=0.88,top=0.98,bottom=0.52)
+gs.update(left=0.07,right=0.9,top=0.98,bottom=0.52)
 axs.append(plt.subplot(gs[0]))
 axs.append(plt.subplot(gs[1]))
 axs.append(plt.subplot(gs[2]))
 gs = gridspec.GridSpec(1,1)
-gs.update(left=0.9,right=0.98,top=0.98,bottom=0.52)
+gs.update(left=0.92,right=0.98,top=0.95,bottom=0.55)
 axs.append(plt.subplot(gs[0]))
 gs = gridspec.GridSpec(1,2,wspace=0.125)
 gs.update(left=0.07,right=0.98,top=0.48,bottom=0.1)
@@ -235,7 +235,7 @@ def make_one_plot(ax,dim,n_plot):
     ax.set_yticks([])
     ax.set_xticks([])
 
-labels = ['McMC (all samples)','McMC (x1-x2 plane)','GAN (x1-x2 plane)']
+labels = ['McMC (all samples)',f'McMC ($x_1-x_2$ plane)',f'GAN ($x_1-x_2$ plane)']
 cmaps = ['binary','binary','Purples']
 colors = ['k','k','rebeccapurple']
 

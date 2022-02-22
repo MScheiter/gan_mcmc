@@ -3,6 +3,7 @@ from matplotlib import pyplot as plt
 from matplotlib import gridspec,colors
 import cartopy.crs as ccrs
 import pickle
+import sys
 
 dpi = 280
 
@@ -74,7 +75,7 @@ def add_ylabel(ax,label,**kwargs):
             rotation='horizontal',rotation_mode='anchor',
             transform=ax.transAxes,**kwargs)
 
-def add_colorbar(pcm,min,max,pos=None,label=None,vertical=False,fraction=0.3,shrink=0.6,aspect=12,rowspan=1,round=2):
+def add_colorbar(pcm,min,max,pos=None,label=None,vertical=False,fraction=0.3,shrink=0.6,aspect=12,rowspan=1,round=2,labelpad=-44):
     if vertical:
         cax = plt.subplot2grid(subplot_size,pos,rowspan=3)
         cbar = plt.colorbar(pcm,ax=cax,orientation='vertical',fraction=fraction,shrink=shrink,aspect=10)
@@ -106,7 +107,9 @@ def plot_marginal(ax,i,j):
                 rotation='horizontal',rotation_mode='anchor',
                 transform=ax.transAxes)
     else:
-        ax.set_xticks([])
+        # ax.set_xticks([])
+        ax.set_xticks([6.8,7.2,7.6])
+        ax.set_xticklabels([])
     ax.set_yticks([])
     ax.set_xlim(bins_x.min(),bins_x.max())
     emd = data_dict['emds'].flatten()[data_dict['chosen_ind_flat']][j*4+i]
@@ -162,7 +165,7 @@ gs = gridspec.GridSpec(6,1)
 gs.update(left=0.02+shift,right=1/3-shift,top=0.98,bottom=0.22)
 ax,pcm = plot_contour(data_dict['emds'],cmap_std,0,0.1,pos=gs)
 ax.plot(data_dict['chosen_lon'],data_dict['chosen_lat'],'x',color='rebeccapurple',markersize=6,transform=ccrs.PlateCarree())
-ax = add_colorbar(pcm,0,0.1,pos=gs,label='Earth Mover Distance',rowspan=2,aspect=12,shrink=0.8,fraction=0.2)
+ax = add_colorbar(pcm,0,0.1,pos=gs,label='Earth Mover Distance',rowspan=2,aspect=12,shrink=0.8,fraction=0.2,labelpad=-47)
 add_label(ax,1)
 
 # Plot histogram of EMDs
@@ -189,6 +192,8 @@ fig.savefig('../figures/fig06.png',dpi=dpi)
 
 ##### Figure 7 -- Covariance Matrices and point spread functions #####
 
+fs = 18
+
 # Set up figure
 axs = []
 fig = plt.figure(figsize=(16,6.5))
@@ -210,13 +215,13 @@ axs.append(plt.subplot(gs[0]))
 im = axs[0].imshow(data_dict['real_cov'],cmap=cmap,vmin=cov_min,vmax=cov_max)
 axs[0].set_xticks([])
 axs[0].set_yticks([])
-axs[0].text(-0.17,0.5,'McMC',va='center',ha='center',rotation='horizontal',rotation_mode='anchor',transform=axs[0].transAxes,fontsize=15)
-axs[0].set_title('Cov. Matrix',fontsize=15)
+axs[0].text(-0.17,0.5,'McMC',va='center',ha='center',rotation='horizontal',rotation_mode='anchor',transform=axs[0].transAxes,fontsize=fs)
+axs[0].set_title('Cov. Matrix',fontsize=fs)
 
 im = axs[1].imshow(data_dict['fake_cov'],cmap=cmap,vmin=cov_min,vmax=cov_max)
 axs[1].set_xticks([])
 axs[1].set_yticks([])
-axs[1].text(-0.17,0.5,'GAN',va='center',ha='center',rotation='horizontal',rotation_mode='anchor',transform=axs[1].transAxes,fontsize=15)
+axs[1].text(-0.17,0.5,'GAN',va='center',ha='center',rotation='horizontal',rotation_mode='anchor',transform=axs[1].transAxes,fontsize=fs)
 
 indices = 5,6,13,14
 for i,index in enumerate(indices):
@@ -234,12 +239,13 @@ for i,index in enumerate(indices):
     axs[i+6].axis('off')
     axs[i+6].plot(data_dict['chosen_lon'][index],data_dict['chosen_lat'][index],'*',color='yellow',markersize=12,transform=ccrs.PlateCarree())
 
-axs[4].text(0,1.05,'Point spread functions',va='center',ha='center',rotation='horizontal',rotation_mode='anchor',transform=axs[4].transAxes,fontsize=15)
+axs[4].text(0,1.05,'Point spread functions',va='center',ha='center',rotation='horizontal',rotation_mode='anchor',transform=axs[4].transAxes,fontsize=fs)
 
 cbar = plt.colorbar(pcm,ax=axs[10],orientation='vertical',fraction=0.9,shrink=0.4,aspect=6)
 axs[10].axis('off')
 cbar.set_ticks([cov_min,0,cov_max])
-cbar.set_label('Covariance',labelpad=-75,fontsize=15)
+cbar.set_label('Covariance',labelpad=-80,fontsize=fs)
+cbar.ax.tick_params(labelsize=12)
 
 fig.savefig('../figures/fig07.png',dpi=dpi)
 
@@ -266,7 +272,7 @@ for i,perc in enumerate([40,50]):
     gs.update(left=left+shift,right=right-shift,top=1.0,bottom=0.5)
     ax,pcm = plot_contour(data_dict['emds'],cmap_std,0,0.1,pos=gs,extend=extend,nlevels=20)
     title = 'EMD (first '+str(perc)+'%)'
-    add_colorbar(pcm,0,0.1,pos=gs,label=title,rowspan=2,aspect=12,shrink=0.8,fraction=0.2)
+    add_colorbar(pcm,0,0.1,pos=gs,label=title,rowspan=2,aspect=12,shrink=0.8,fraction=0.2,labelpad=-47)
 
     # Plot histogram of EMD
     shift = 0.09
@@ -305,9 +311,11 @@ cbar = plt.colorbar(im,ax=ax,orientation='horizontal',fraction=0.9,shrink=0.4,as
 ax.axis('off')
 cbar.set_ticks([cov_min,0,cov_max])
 cbar.ax.tick_params(labelsize=14)
-cbar.set_label('Covariance',labelpad=-45,fontsize=15)
+cbar.set_label('Covariance',labelpad=-47,fontsize=15)
 
 fig.savefig('../figures/fig08.png',dpi=dpi)
+
+sys.exit()
 
 
 ##### Figure 9 -- Global map #####
