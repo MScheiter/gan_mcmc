@@ -3,7 +3,6 @@ from matplotlib import pyplot as plt
 from matplotlib import gridspec,colors
 import cartopy.crs as ccrs
 import pickle
-import sys
 
 dpi = 280
 
@@ -314,8 +313,6 @@ cbar.ax.tick_params(labelsize=14)
 cbar.set_label('Covariance',labelpad=-47,fontsize=15)
 
 fig.savefig('../figures/fig08.png',dpi=dpi)
-
-sys.exit()
 
 
 ##### Figure 9 -- Global map #####
