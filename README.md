@@ -1,6 +1,8 @@
 # Code and data for "Upscaling and downscaling Monte Carlo ensembles with generative models" (Scheiter et al., GJI, 2022)
 
-This repository contains code and data supporting the work published in *TBA*
+This repository contains code and data supporting the work published in:
+
+Scheiter, M., Valentine, A., Sambridge, M., 2022. [Upscaling and downscaling Monte Carlo ensembles with generative models](https://doi.org/10.1093/gji/ggac100), Geophys. J. Int., ggac100.
 
 ## GAN codes
 The codes used in this study to train the GANs can be found in the folder `synthetic_example/`.
