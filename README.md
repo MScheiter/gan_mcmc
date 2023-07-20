@@ -1,8 +1,12 @@
 # Code and data for "Upscaling and downscaling Monte Carlo ensembles with generative models" (Scheiter et al., GJI, 2022)
 
-This repository contains code and data supporting the work published in:
+This repository contains code and data supporting the work published by Scheiter et al. (2022). It contains implementations of different GAN varieties (GAN, WGAN, and DCGAN) and a their application to a synthetic and a geophysical example. If you make use of any of the code or models in this repository, please cite this publication:
 
 Scheiter, M., Valentine, A., Sambridge, M., 2022. [Upscaling and downscaling Monte Carlo ensembles with generative models](https://doi.org/10.1093/gji/ggac100), Geophys. J. Int., 230(2):916--931.
+
+The repository also contains tomography data from Mousavi et al. (2021). If you use these in their original or GAN-reproduced version, please cite their paper:
+
+Mousavi, S., Tkalcic, H., Hawkins, R., & Sambridge, M., 2021. [Lowermost mantle shear-velocity structure from hierarchical trans-dimensional Bayesian tomography](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2020JB021557), J. Geophys. Res. Solid Earth, 126, e2020JB021557.
 
 ## GAN codes
 The codes used in this study to train the GANs can be found in the folder `synthetic_example/`.
@@ -19,10 +23,6 @@ The directory `synthetic_example/` contains everything needed to reproduce the s
 The directory `geophysical_example/` contains the trained GANs from section 4 and everything needed to reproduce the figures of the geophysical example based on the study of Mousavi et al. (2021).
 - `plot_figures.py` can be used to reproduce Figures 5-9 of the paper and store them in the directory `figures/`. All data necessary for these plots can be found in `plotting_data/`.
 - `trained_gans/` contains the trained GANs of the Australia patch from section 4.2 and the 16 patches from section 4.4.
-
-If you use the tomography data of Mousavi et al. (2021) in its original or GAN-reproduced version, please cite their paper:
-
-Mousavi, S., Tkalcic, H., Hawkins, R., & Sambridge, M., 2021. [Lowermost mantle shear-velocity structure from hierarchical trans-dimensional Bayesian tomography](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2020JB021557), J. Geophys. Res. Solid Earth, 126, e2020JB021557.
 
 ## Recommended package versions
 All codes in this repository have been tested with the following package versions:
