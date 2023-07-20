@@ -1,6 +1,6 @@
 # Code and data for "Upscaling and downscaling Monte Carlo ensembles with generative models" (Scheiter et al., GJI, 2022)
 
-This repository contains code and data supporting the work published by Scheiter et al. (2022). It contains implementations of different GAN varieties (GAN, WGAN, and DCGAN) and a their application to a synthetic and a geophysical example. If you make use of any of the code or models in this repository, please cite this publication:
+This repository contains code and data supporting the work published by Scheiter et al. (2022). It includes implementations of different GAN varieties (GAN, WGAN, and DCGAN) and their application to examples of synthetic and geophysical data. If you make use of any of the code or models in this repository, please cite this publication:
 
 Scheiter, M., Valentine, A., Sambridge, M., 2022. [Upscaling and downscaling Monte Carlo ensembles with generative models](https://doi.org/10.1093/gji/ggac100), Geophys. J. Int., 230(2):916--931.
 
